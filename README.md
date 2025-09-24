@@ -5,6 +5,11 @@ You can easily check contrast ratios, preview UI components, and **export design
 Build **accessible, consistent, and portable design systems** with ease.
 
 ---
+## 📸 Screenshots
+
+![Accessible Theme Builder](./src/assets/ss.png)
+
+---
 
 ## ✨ Features
 

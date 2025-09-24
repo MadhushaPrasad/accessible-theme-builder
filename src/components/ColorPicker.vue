@@ -1,16 +1,25 @@
 <template>
-  <div class="flex items-center gap-4">
-    <label for="brand" class="sr-only">Brand color</label>
-    <input
-      id="brand"
-      type="color"
-      v-model="color"
-      @input="onInput"
-      aria-label="Pick brand color"
-    />
-    <input v-model="hex" @change="onHexChange" aria-label="Hex input" />
-    <button @click="onGenerate" class="btn">Generate</button>
-    <div class="ml-4">
+  <div class="flex flex-col gap-4">
+    <div class="flex gap-3">
+      <input
+        id="brand"
+        type="color"
+        v-model="color"
+        @input="onInput"
+        aria-label="Pick brand color"
+      />
+      <label for="brand" class="dark:text-white">Brand color</label>
+    </div>
+    <div class="flex gap-3">
+      <input
+        class="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+        v-model="hex"
+        @change="onHexChange"
+        aria-label="Hex input"
+      />
+      <button @click="onGenerate" class="btn">Generate</button>
+    </div>
+    <div class="flex gap-3">
       <label><input type="radio" value="AA" v-model="level" /> AA</label>
       <label class="ml-2"
         ><input type="radio" value="AAA" v-model="level" /> AAA</label

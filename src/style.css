@@ -13,6 +13,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.btn-primary { background: var(--primary-500); color: var(--primary-contrast, #fff); }
+.card { background: var(--bg, white); color: var(--text, #111); }
+
+
 a {
   font-weight: 500;
   color: #646cff;

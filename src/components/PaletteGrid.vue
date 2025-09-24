@@ -6,7 +6,7 @@
 
     <div
       :style="{ background: `var(--primary-500)`, color: bestText }"
-      class="bg-white dark:bg-gray-800 shadow-sm p-6 border border-gray-200 dark:border-gray-700 rounded-lg max-w-sm"
+      class="bg-white dark:bg-gray-800 shadow-sm p-6 border border-gray-200 dark:border-gray-700 rounded-lg max-w-sm dark:text-white"
     >
       <a href="#" :style="{color: bestText }">
         <h5
@@ -25,7 +25,7 @@
       </p>
       <a
         href="#"
-        :style="{ background: `var(--primary-400)`, color: bestText }"
+        :style="{ background: `var(--primary-40)`, color: bestText }"
         class="inline-flex items-center bg-blue-700 hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700 px-3 py-2 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-white text-sm text-center"
       >
         Read more

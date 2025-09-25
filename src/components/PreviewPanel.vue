@@ -20,7 +20,10 @@
       <h3 :style="{ color: selectedHex }" class="font-bold text-xl">Heading</h3>
 
       <!-- paragraph -->
-      <p :style="{ color: selectedHex }" class="w-100 font-semibold text-justify">
+      <p
+        :style="{ color: selectedHex }"
+        class="w-100 font-semibold text-justify"
+      >
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate vero
         animi, fuga dolorum, ullam harum consequatur veniam molestiae adipisci
         earum ad praesentium quae nemo eaque ipsa, dicta laudantium tempora
@@ -82,8 +85,8 @@
         :class="
           isDark
             ? selectedLabel == '50'
-              ? 'bg-gray-800 text-black border-gray-700 placeholder-black'
-              : 'bg-gray-800 text-white border-gray-700 placeholder-white'
+              ? 'bg-gray-800 text-black placeholder-black'
+              : 'bg-gray-800 text-white  placeholder-white'
             : selectedLabel == '50'
             ? 'bg-white text-black border-gray-300 placeholder-black'
             : 'bg-white text-white border-gray-300 placeholder-white'

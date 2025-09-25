@@ -1,11 +1,18 @@
 <template>
-  <div class="flex flex-row w-full h-full">
-    <div class="fixed flex flex-col p-10 w-1/2 h-screen">
+  <div class="grid grid-cols-3 h-full">
+    <!-- Left panel -->
+    <div class="p-10 h-screen">
       <h1 class="mb-6 font-bold text-4xl">Accessible Theme Builder</h1>
-      <ColorPicker @generate="onGenerate" />
+      <ColorPicker v-model="brandColor" @generate="onGenerate" />
     </div>
-    <div class="right-0 absolute p-10 w-150 h-screen overflow-y-scroll">
-      <PaletteGrid :palette="palette" :level="level" />
+
+    <!-- Right panel -->
+    <div class="col-span-2 p-10 h-screen">
+      <PaletteGrid :palette="palette" @select="onSelect" />
+      <div class="flex flex-row justify-between gap-3 px-4">
+        <PreviewPanel :selected="selected" class="mt-6" />
+        <ExportPanel :palette="palette" class="mt-6" />
+      </div>
     </div>
   </div>
 </template>
@@ -14,14 +21,31 @@
 import { ref } from "vue";
 import ColorPicker from "./components/ColorPicker.vue";
 import PaletteGrid from "./components/PaletteGrid.vue";
-import { generateShades, applyCssVars } from "./composables/useColorEngine.js";
+import PreviewPanel from "./components/PreviewPanel.vue";
+import ExportPanel from "./components/ExportPanel.vue";
+import {
+  generateShades,
+  applyCssVars,
+  bestTextColor,
+  contrastRatio,
+} from "./composables/useColorEngine.js";
 
-const palette = ref({});
-const level = ref("AA");
+const brandColor = ref("#1E90FF");
+const palette = ref([]);
+const selected = ref({ hex: "#1E90FF", label: "primary" });
 
-function onGenerate({ base, level: lvl }) {
-  palette.value = generateShades(base, 9);
-  applyCssVars(palette.value, "primary");
-  level.value = lvl;
+function onGenerate() {
+  const shades = generateShades(brandColor.value, 10);
+  palette.value = Object.entries(shades).map(([label, hex]) => ({
+    label,
+    hex,
+    textColor: bestTextColor(hex),
+    ratio: contrastRatio(hex, "#ffffff").toFixed(2),
+  }));
+  applyCssVars(shades, "primary");
+}
+
+function onSelect(color) {
+  selected.value = color;
 }
 </script>

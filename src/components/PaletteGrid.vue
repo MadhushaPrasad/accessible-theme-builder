@@ -1,50 +1,27 @@
 <template>
-  <div class="flex flex-col gap-5">
-    <button :style="{ background: `var(--primary-500)`, color: bestText }">
-      Primary
-    </button>
-
-    <div
-      :style="{ background: `var(--primary-500)`, color: bestText }"
-      class="bg-white dark:bg-gray-800 shadow-sm p-6 border border-gray-200 dark:border-gray-700 rounded-lg max-w-sm dark:text-white"
-    >
-      <a href="#" :style="{color: bestText }">
-        <h5
-          :style="{ color: bestText }"
-          class="mb-2 font-bold text-gray-900 dark:text-white text-2xl tracking-tight"
-        >
-          Noteworthy technology acquisitions 2021
-        </h5>
-      </a>
-      <p
-        :style="{ color: bestText }"
-        class="mb-3 font-normal text-gray-700 dark:text-gray-400"
+  <div>
+    <h2 class="mb-2 font-semibold">Light Palette</h2>
+    <div class="gap-3 grid grid-cols-5 p-4 border rounded">
+      <div
+        v-for="(c, i) in palette"
+        :key="i"
+        class="flex flex-col items-center p-2 border rounded cursor-pointer"
+        :style="{ backgroundColor: c.hex, color: c.textColor }"
+        @click="$emit('select', c)"
       >
-        Here are the biggest enterprise technology acquisitions of 2021 so far,
-        in reverse chronological order.
-      </p>
-      <a
-        href="#"
-        :style="{ background: `var(--primary-40)`, color: bestText }"
-        class="inline-flex items-center bg-blue-700 hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700 px-3 py-2 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-white text-sm text-center"
-      >
-        Read more
-        <svg
-          class="ms-2 w-3.5 h-3.5 rtl:rotate-180"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 14 10"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M1 5h12m0 0L9 1m4 4L9 9"
-          />
-        </svg>
-      </a>
+        <span class="font-medium text-sm">{{ c.label }}</span>
+        <ContrastBadge :ratio="c.ratio" />
+      </div>
     </div>
   </div>
 </template>
+
+<script setup>
+import ContrastBadge from "./ContrastBadge.vue";
+
+defineProps({
+  palette: { type: Array, default: () => [] },
+});
+
+defineEmits(["select"]);
+</script>

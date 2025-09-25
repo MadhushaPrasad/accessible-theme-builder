@@ -19,7 +19,7 @@
     <h3 class="font-bold text-xl">Heading</h3>
 
     <!-- Card & Input -->
-    <div class="flex gap-2">
+    <div class="flex flex-col gap-2">
       <div
         :style="{ background: selectedHex, color: selectedTextColor }"
         :class="
@@ -67,20 +67,23 @@
         </a>
       </div>
 
-      <div>
-        <input
-          :class="
-            isDark
-              ? 'bg-gray-800 text-white border-gray-700'
-              : 'bg-white text-gray-900 border-gray-300'
-          "
-          type="text"
-          id="input"
-          class="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
-          placeholder="Input"
-          required
-        />
-      </div>
+      <input
+        :style="{ background: selectedHex }"
+        :class="
+          isDark
+            ? selectedLabel == '50'
+              ? 'bg-gray-800 text-black border-gray-700 placeholder-black'
+              : 'bg-gray-800 text-white border-gray-700 placeholder-white'
+            : selectedLabel == '50'
+            ? 'bg-white text-black border-gray-300 placeholder-black'
+            : 'bg-white text-white border-gray-300 placeholder-white'
+        "
+        type="text"
+        id="input"
+        class="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+        placeholder="Input"
+        required
+      />
     </div>
 
     <!-- Link -->
@@ -133,5 +136,9 @@ function getTextColor(bg) {
 
 const selectedTextColor = computed(() => {
   return props.selected.textColor || getTextColor(props.selected.hex);
+});
+
+const selectedLabel = computed(() => {
+  return props.selected.label;
 });
 </script>

@@ -8,7 +8,8 @@
     <input type="text" v-model="color" class="px-3 py-2 border rounded w-40" />
     <button
       @click="$emit('generate')"
-      class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded text-white"
+      :style="{ background: selectedHex, color: selectedTextColor }"
+      class="bg-blue-500 hover:bg-blue-800 px-4 py-2 rounded text-white"
     >
       Generate
     </button>

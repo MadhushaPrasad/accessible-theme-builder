@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="mb-2 font-semibold">Light Palette</h2>
+    <h2 class="mb-2 px-4 font-semibold">Light Palette</h2>
     <div class="gap-3 grid grid-cols-5 p-4 border rounded">
       <div
         v-for="(c, i) in palette"

@@ -1,13 +1,13 @@
 <template>
   <div class="grid grid-cols-3 h-full">
     <!-- Left panel -->
-    <div class="p-10 h-screen">
-      <h1 class="mb-6 font-bold text-4xl">Accessible Theme Builder</h1>
+    <div class="fixed p-10 h-screen">
+      <h1 class="mb-6 font-bold text-3xl">Accessible Theme Builder</h1>
       <ColorPicker v-model="brandColor" @generate="onGenerate" />
     </div>
 
     <!-- Right panel -->
-    <div class="col-span-2 p-10 h-screen">
+    <div class="right-0 absolute col-span-2 p-10 h-screen">
       <PaletteGrid :palette="palette" @select="onSelect" />
       <div class="flex flex-row justify-between gap-3 px-4">
         <PreviewPanel :selected="selected" class="mt-6" />
@@ -42,6 +42,8 @@ function onGenerate() {
     textColor: bestTextColor(hex),
     ratio: contrastRatio(hex, "#ffffff").toFixed(2),
   }));
+
+  console.log(palette.value)
   applyCssVars(shades, "primary");
 }
 

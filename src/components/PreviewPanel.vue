@@ -16,7 +16,17 @@
     </div>
 
     <!-- Heading -->
-    <h3 class="font-bold text-xl">Heading</h3>
+    <div>
+      <h3 :style="{ color: selectedHex }" class="font-bold text-xl">Heading</h3>
+
+      <!-- paragraph -->
+      <p :style="{ color: selectedHex }" class="w-100 font-semibold text-justify">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate vero
+        animi, fuga dolorum, ullam harum consequatur veniam molestiae adipisci
+        earum ad praesentium quae nemo eaque ipsa, dicta laudantium tempora
+        nihil!
+      </p>
+    </div>
 
     <!-- Card & Input -->
     <div class="flex flex-col gap-2">

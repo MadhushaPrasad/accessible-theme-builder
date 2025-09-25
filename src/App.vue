@@ -9,7 +9,7 @@
     <!-- Right panel -->
     <div class="right-0 absolute col-span-2 p-10 h-screen">
       <PaletteGrid :palette="palette" @select="onSelect" />
-      <div class="flex flex-row justify-between gap-3 px-4">
+      <div class="flex flex-row justify-between gap-3 px-4 py-10">
         <PreviewPanel :selected="selected" class="mt-6" />
         <ExportPanel :palette="palette" class="mt-6" />
       </div>

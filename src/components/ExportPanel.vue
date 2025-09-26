@@ -53,22 +53,29 @@ async function exportPalette(format) {
     }
 
     if (JSON.stringify(props.palette).length <= 2) {
-      notify.success({
+      notify.warning({
         title: "Warning!",
         type: "warning",
+        icon: "warning",
+        class:
+          "fixed top-3 right-3 bg-white !text-yellow-800 justify-content-between !border-yellow-400 border-l-4 rounded-md shadow-md !p-4 flex items-center transition-all transform translate-x-full opacity-0 w-80 lg:w-100 h-fit",
         text: "You Should Generate Colour Palette",
         position: "top-3 right-3",
-        duration: 3000,
+        duration: 5000,
       });
     } else {
       if (output) {
         await navigator.clipboard.writeText(output);
         notify.success({
           title: "Success!",
+          icon: "success",
           type: "success",
+          titleColor: "gray",
+          class:
+            "fixed top-3 right-3 bg-white !text-green-800 justify-content-between !border-green-400 border-l-4 rounded-md shadow-md !p-4 flex items-center transition-all transform translate-x-full opacity-0 w-80 lg:w-100 h-fit",
           text: `${format} copied to clipboard!`,
           position: "top-3 right-3",
-          duration: 3000,
+          duration: 50000,
         });
       }
     }

@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@madhusha_99/notification-center": "^1.0.5",
+    "@madhusha_99/notification-center": "^1.0.11",
     "chroma-js": "^3.1.2",
     "vue": "^3.5.21"
   },

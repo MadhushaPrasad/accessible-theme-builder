@@ -1,101 +1,90 @@
 <template>
   <div
-    class="flex flex-col flex-1 gap-3 space-y-3 p-4 border rounded w-full transition-colors"
-    :class="isDark ? 'bg-white text-gray-900' : 'bg-white text-gray-900'"
+    class="flex flex-col gap-4 p-4 sm:p-6 border rounded-lg w-full transition-colors"
+    :class="isDark ? 'bg-gray-800 text-white border-gray-700' : 'bg-white text-gray-900 border-gray-200'"
   >
-    <h2 class="font-semibold">Preview</h2>
+    <h2 class="font-semibold text-lg">Preview</h2>
 
     <!-- Primary Button -->
     <div>
       <button
-        class="px-5 py-2 rounded transition-colors"
+        class="px-5 py-2.5 rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2"
+        :class="isDark ? 'focus:ring-offset-gray-800' : 'focus:ring-offset-white'"
         :style="{ background: selectedHex, color: selectedTextColor }"
       >
-        Primary
+        Primary Button
       </button>
     </div>
 
-    <!-- Heading -->
-    <div>
-      <h3 :style="{ color: selectedHex }" class="font-bold text-xl">Heading</h3>
-
-      <!-- paragraph -->
+    <!-- Heading & Paragraph -->
+    <div class="space-y-2">
+      <h3 :style="{ color: selectedHex }" class="font-bold text-xl">Sample Heading</h3>
       <p
         :style="{ color: selectedHex }"
-        class="w-100 font-semibold text-justify"
+        class="text-sm sm:text-base leading-relaxed"
       >
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate vero
         animi, fuga dolorum, ullam harum consequatur veniam molestiae adipisci
-        earum ad praesentium quae nemo eaque ipsa, dicta laudantium tempora
-        nihil!
+        earum ad praesentium quae nemo eaque ipsa.
       </p>
     </div>
 
-    <!-- Card & Input -->
-    <div class="flex flex-col gap-2">
-      <div
-        :style="{ background: selectedHex, color: selectedTextColor }"
-        :class="
-          isDark
-            ? 'bg-gray-800 text-white border-gray-700 dark:border-gray-700 shadow-sm p-6 border border-gray-200 rounded-lg max-w-sm'
-            : 'bg-gray-100 text-gray-900 border-gray-300 shadow-sm p-6 border border-gray-200 rounded-lg max-w-sm'
-        "
-      >
-        <a href="#">
-          <h5
-            :style="{ color: selectedTextColor }"
-            class="mb-2 font-bold text-gray-900 dark:text-white text-2xl tracking-tight"
-          >
-            Noteworthy technology acquisitions 2021
-          </h5>
-        </a>
-        <p
+    <!-- Card -->
+    <div
+      class="p-4 sm:p-6 border rounded-lg shadow-sm w-full max-w-sm"
+      :style="{ background: selectedHex, color: selectedTextColor }"
+    >
+      <a href="#" class="block">
+        <h5
           :style="{ color: selectedTextColor }"
-          class="mb-3 font-normal text-gray-700 dark:text-gray-400"
+          class="mb-2 font-bold text-lg sm:text-xl tracking-tight"
         >
-          Here are the biggest enterprise technology acquisitions of 2021 so
-          far, in reverse chronological order.
-        </p>
-        <a
-          :style="{ background: selectedHex, color: selectedTextColor }"
-          href="#"
-          class="inline-flex items-center shadow-md px-3 py-2 border rounded-lg focus:outline-none focus:ring-4 font-medium text-sm text-center transition-colors"
+          Noteworthy technology acquisitions
+        </h5>
+      </a>
+      <p
+        :style="{ color: selectedTextColor }"
+        class="mb-3 text-sm opacity-90"
+      >
+        Here are the biggest enterprise technology acquisitions of 2021 so
+        far, in reverse chronological order.
+      </p>
+      <a
+        href="#"
+        class="inline-flex items-center px-3 py-2 border border-current/20 rounded-lg font-medium text-sm transition-opacity hover:opacity-80 focus:outline-none focus:ring-2"
+        :style="{ color: selectedTextColor }"
+      >
+        Read more
+        <svg
+          class="ms-2 w-3.5 h-3.5 rtl:rotate-180"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 14 10"
         >
-          Read more
-          <svg
-            class="ms-2 w-3.5 h-3.5 rtl:rotate-180"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 14 10"
-          >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M1 5h12m0 0L9 1m4 4L9 9"
-            />
-          </svg>
-        </a>
-      </div>
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M1 5h12m0 0L9 1m4 4L9 9"
+          />
+        </svg>
+      </a>
+    </div>
 
+    <!-- Input -->
+    <div class="max-w-sm">
+      <label for="preview-input" class="sr-only">Sample input field</label>
       <input
-        :style="{ background: selectedHex }"
-        :class="
-          isDark
-            ? selectedLabel == '50'
-              ? 'bg-gray-800 text-black placeholder-black'
-              : 'bg-gray-800 text-white  placeholder-white'
-            : selectedLabel == '50'
-            ? 'bg-white text-black border-gray-300 placeholder-black'
-            : 'bg-white text-white border-gray-300 placeholder-white'
-        "
         type="text"
-        id="input"
-        class="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
-        placeholder="Input"
-        required
+        id="preview-input"
+        class="block w-full p-2.5 border rounded-lg text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+        :class="isDark 
+          ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
+          : 'bg-gray-50 border-gray-300 text-gray-900 placeholder-gray-500'"
+        placeholder="Sample input"
+        aria-label="Sample input field"
       />
     </div>
 
@@ -103,10 +92,10 @@
     <div>
       <a
         href="#"
-        class="underline transition-colors"
+        class="underline transition-colors hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded"
         :style="{ color: selectedHex }"
       >
-        Link
+        Sample Link
       </a>
     </div>
   </div>
@@ -135,16 +124,21 @@ const isDark = computed(() => {
 // Selected hex
 const selectedHex = computed(() => props.selected.hex || "#1E90FF");
 
-// Auto choose readable text color (white/black) based on luminance
+// Auto choose readable text color using proper sRGB luminance calculation
+function srgbToLinear(v) {
+  v = v / 255;
+  return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+}
+
 function getTextColor(bg) {
   if (!bg) return "#fff";
   const hex = bg.replace("#", "");
   const r = parseInt(hex.substring(0, 2), 16);
   const g = parseInt(hex.substring(2, 4), 16);
   const b = parseInt(hex.substring(4, 6), 16);
-  // luminance formula
-  const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-  return luminance > 0.5 ? "#000000" : "#ffffff";
+  // Use proper WCAG luminance formula (consistent with useColorEngine.js)
+  const luminance = 0.2126 * srgbToLinear(r) + 0.7152 * srgbToLinear(g) + 0.0722 * srgbToLinear(b);
+  return luminance > 0.179 ? "#000000" : "#ffffff";
 }
 
 const selectedTextColor = computed(() => {

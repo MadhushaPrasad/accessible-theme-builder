@@ -1,12 +1,18 @@
 <template>
   <div
-    class="space-y-2 bg-white dark:bg-gray-900 p-4 border border-gray-300 dark:border-gray-700 rounded text-gray-900 dark:text-white transition-colors"
+    class="space-y-2 p-4 border rounded transition-colors lg:w-64"
+    :class="isDark 
+      ? 'bg-gray-800 border-gray-700 text-white' 
+      : 'bg-white border-gray-300 text-gray-900'"
   >
     <h2 class="font-semibold text-center">Export</h2>
     <button
       v-for="format in formats"
       :key="format"
-      class="block bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-2 border border-gray-300 dark:border-gray-700 rounded w-full text-gray-900 dark:text-white transition-colors"
+      class="block px-3 py-2 border rounded w-full transition-colors focus:ring-2 focus:ring-blue-500 focus:outline-none"
+      :class="isDark 
+        ? 'bg-gray-700 hover:bg-gray-600 border-gray-600 text-white' 
+        : 'bg-gray-100 hover:bg-gray-200 border-gray-300 text-gray-900'"
       @click="exportPalette(format)"
     >
       {{ format }}
@@ -15,11 +21,7 @@
 </template>
 
 <script setup>
-import { Toast, Dialog } from "@madhusha_99/notification-center";
-
-window.notify = new Toast(); // you can use global variable name as you want
-window.dialog = new Dialog();
-
+import { Toast } from "@madhusha_99/notification-center";
 import {
   toCssVars,
   toScssMap,
@@ -27,8 +29,12 @@ import {
   toUnoConfig,
 } from "./../composables/useExporters";
 
+// Create toast instance locally instead of polluting global scope
+const notify = new Toast();
+
 const props = defineProps({
-  palette: { type: Array, default: () => [] },
+  palette: { type: Object, default: () => ({}) },
+  isDark: { type: Boolean, default: false }
 });
 
 const formats = ["CSS Variables", "SCSS", "Tailwind", "UnoCSS"];
@@ -52,30 +58,31 @@ async function exportPalette(format) {
         break;
     }
 
-    if (JSON.stringify(props.palette).length <= 2) {
+    if (Object.keys(props.palette).length === 0) {
       notify.warning({
-        title: "Warning!",
+        title: "Warning",
         type: "warning",
         icon: "warning",
-        class:
-          "fixed top-3 right-3 bg-white !text-yellow-800 justify-content-between !border-yellow-400 border-l-4 rounded-md shadow-md !p-4 flex items-center transition-all transform translate-x-full opacity-0 w-80 lg:w-100 h-fit",
-        text: "You Should Generate Colour Palette",
-        position: "top-3 right-3",
-        duration: 5000,
+        class: "toast-notification toast-warning",
+        text: "Please generate a color palette first",
+        position: "top-right",
+        duration: 3500,
+        closeButton: true,
+        closeButtonClass: "toast-close-btn",
       });
     } else {
       if (output) {
         await navigator.clipboard.writeText(output);
         notify.success({
-          title: "Success!",
+          title: "Copied!",
           icon: "success",
           type: "success",
-          titleColor: "gray",
-          class:
-            "fixed top-3 right-3 bg-white !text-green-800 justify-content-between !border-green-400 border-l-4 rounded-md shadow-md !p-4 flex items-center transition-all transform translate-x-full opacity-0 w-80 lg:w-100 h-fit",
-          text: `${format} copied to clipboard!`,
-          position: "top-3 right-3",
-          duration: 50000,
+          class: "toast-notification toast-success",
+          text: `${format} copied to clipboard`,
+          position: "top-right",
+          duration: 2500,
+          closeButton: true,
+          closeButtonClass: "toast-close-btn",
         });
       }
     }

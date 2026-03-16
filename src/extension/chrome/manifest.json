@@ -4,13 +4,13 @@
   "manifest_version": 3,
   "version": "1.0.0",
   "action": {
-    "default_popup": "./popup/popup.html",
+    "default_popup": "popup/popup.html",
     "default_title": "Open Accessible Theme Builder",
-    "default_icon": "./images/darkMode.png"
+    "default_icon": "images/darkMode.png"
   },
   "devtools_page": "devtools.html",
   "permissions": ["storage", "activeTab", "scripting"],
   "icons": {
-    "48": "./images/darkMode.png"
+    "48": "images/darkMode.png"
   }
 }

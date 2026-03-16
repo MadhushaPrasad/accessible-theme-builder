@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:chrome": "VITE_BROWSER=chrome vite build",
+    "build:firefox": "VITE_BROWSER=firefox vite build",
     "preview": "vite preview"
   },
   "dependencies": {

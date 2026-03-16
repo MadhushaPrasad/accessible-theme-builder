@@ -1,0 +1,16 @@
+{
+  "name": "Accessible Theme Builder",
+  "description": "Accessible Theme Builder 🎨 — A developer-friendly tool to generate WCAG-compliant color palettes. Check real-time accessibility contrast, preview UI components, and export tokens for CSS, SCSS, Tailwind, or UnoCSS. Build accessible, consistent, and portable design systems with ease.",
+  "manifest_version": 3,
+  "version": "1.0.0",
+  "action": {
+    "default_popup": "./popup/popup.html",
+    "default_title": "Open Accessible Theme Builder",
+    "default_icon": "assets/darkMode.png"
+  },
+  "devtools_page": "devtools.html",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "icons": {
+    "48": "assets/darkMode.png"
+  }
+}

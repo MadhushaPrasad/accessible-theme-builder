@@ -16,11 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
     closeBtn.addEventListener('click', () => {
         // Log the correct shortcut to the console for the user to see if they have it open
         console.log(
-            "%c Theme Builder Instructions ", 
+            "%c Accessible Theme Builder Instructions ", 
             "color: white; background: #10b981; font-weight: bold; padding: 4px; border-radius: 4px;"
         );
         console.log(`To open DevTools on your device, press: ${activeShortcut}`);
-        console.log("Then, click the 'Theme Builder' tab.");
+        console.log("Then, click the 'Accessible Theme Builder' tab.");
 
         // Small delay so they might see the console log before it closes, 
         // though window.close() is usually instant.

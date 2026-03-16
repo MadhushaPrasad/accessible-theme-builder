@@ -6,11 +6,11 @@
   "action": {
     "default_popup": "./popup/popup.html",
     "default_title": "Open Accessible Theme Builder",
-    "default_icon": "assets/darkMode.png"
+    "default_icon": "./images/darkMode.png"
   },
   "devtools_page": "devtools.html",
   "permissions": ["storage", "activeTab", "scripting"],
   "icons": {
-    "48": "assets/darkMode.png"
+    "48": "./images/darkMode.png"
   }
 }

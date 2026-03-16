@@ -1,12 +1,12 @@
 <template>
   <div 
-    class="flex flex-col lg:flex-row min-h-screen transition-colors duration-300"
+    class="flex lg:flex-row flex-col min-h-screen transition-colors duration-300"
     :class="isDark ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'"
   >
     <!-- Dark Mode Toggle - Fixed top right -->
     <button
       @click="toggleDarkMode"
-      class="fixed top-4 right-4 z-50 p-2 rounded-lg border transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+      class="top-4 right-4 z-50 fixed p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
       :class="isDark 
         ? 'bg-gray-800 border-gray-700 text-yellow-400 hover:bg-gray-700' 
         : 'bg-gray-100 border-gray-300 text-gray-700 hover:bg-gray-200'"
@@ -24,7 +24,7 @@
 
     <!-- Left panel -->
     <div 
-      class="p-6 lg:p-10 lg:w-80 lg:shrink-0 border-b lg:border-b-0 lg:border-r transition-colors"
+      class="p-6 lg:p-10 lg:border-r border-b lg:border-b-0 lg:w-80 transition-colors lg:shrink-0"
       :class="isDark ? 'border-gray-700 bg-gray-800' : 'border-gray-200 bg-gray-50'"
     >
       <h1 class="mb-6 font-bold text-2xl lg:text-3xl">Accessible Theme Builder</h1>
@@ -34,7 +34,7 @@
     <!-- Right panel -->
     <div class="flex-1 p-6 lg:p-10 overflow-auto">
       <PaletteGrid :palette="palette" @select="onSelect" :isDark="isDark" />
-      <div class="flex flex-col lg:flex-row justify-between gap-6 py-10">
+      <div class="flex lg:flex-row flex-col justify-between gap-6 py-10">
         <PreviewPanel :selected="selectedWithMode" class="flex-1" />
         <ExportPanel :palette="paletteObject" :isDark="isDark" />
       </div>

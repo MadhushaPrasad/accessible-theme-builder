@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Theme Builder</title>
+    <link rel="stylesheet" href="./popup.css">
+</head>
+<body>
+    <div class="popup-container">
+        <header class="header">
+            <div class="brand">
+                <img src="./../images/darkMode.png" class="logo" alt="Logo">
+                <span class="title">Accessible Theme Builder</span>
+            </div>
+            <span class="badge">v1.0.0</span>
+        </header>
+
+        <main class="content">
+            <div class="status-card">
+                <span class="status-label">Extension Status</span>
+                <div class="status-indicator">
+                    <div class="dot pulse"></div>
+                    <span class="status-text">Active</span>
+                </div>
+            </div>
+
+            <div class="alert-box">
+                <div class="alert-content">
+                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <p class="alert-text">
+                        To use the builder, right-click anywhere on this page and select <strong>"Inspect"</strong>, then switch to the <strong>"Accessible Theme Builder"</strong> tab.
+                    </p>
+                </div>
+            </div>
+
+            <button id="closeBtn" class="primary-btn">Got it!</button>
+        </main>
+
+        <footer class="footer">
+            <p id="shortcutHint" class="shortcut-text">Shortcut: Press F12 or Cmd+Opt+I</p>
+        </footer>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

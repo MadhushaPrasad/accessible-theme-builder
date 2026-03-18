@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "Accessible Theme Builder 🎨",
+  "version": "1.2.0",
+  "description": "A developer-friendly tool to generate WCAG-compliant color palettes.",
+
+  "browser_action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Open Accessible Theme Builder"
+  },
+
+  "devtools_page": "devtools.html",
+
+  "permissions": ["storage", "activeTab"],
+
+  "icons": {
+    "48": "images/darkMode.png"
+  }
+}
